@@ -1,0 +1,33 @@
+{
+    "succsess":{
+        "name": "ThiagoF",
+        "email": "thiagof@gmail.com",
+        "password": "123456"
+    },
+    "invpass":{
+        "email": "thiago@gmail.com",
+        "password": "pwd456"
+    },
+    "email404":{
+        "email": "thiago@404.com",
+        "password": "123456"
+    },
+    "shorpass":[
+        "1",
+        "12",
+        "123",
+        "1234",
+        "12345"
+    ],
+    "invemails":[
+        "thiago&gmail.com",
+        "thiago.com.br",
+        "@gmail.com",
+        "@",
+        "thiago@",
+        "121323",
+        "@#@!#!@",
+        "xpto123"
+    ]
+ 
+}
