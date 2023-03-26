@@ -81,7 +81,7 @@ describe('login', () => {
 
         emails.forEach((e) => {
             it(`não deve logar com o email: ${e}`, () => {
-                loginPage.submit(e, 'pwd123')
+                loginPage.submit(e, '123456')
                 loginPage.alertShouldBe('Informe um email válido')
             })
         })
