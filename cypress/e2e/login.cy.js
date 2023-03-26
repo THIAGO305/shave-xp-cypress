@@ -9,8 +9,8 @@ describe('login', () => {
         it('deve logar com sucesso', () => {
             const user = {
                 name: 'Thiago',
-                email: 'thiago@yahoo.com',
-                password: 'pwd123'
+                email: 'thiago@gmail.com',
+                password: '123456'
             }
 
             loginPage.submit(user.email, user.password)
@@ -20,8 +20,8 @@ describe('login', () => {
         it('não deve logar com senha incorreta', () => {
             const user = {
                 name: 'Thiago',
-                email: 'thiago@yahoo.com',
-                password: '123456'
+                email: 'thiago@gmail.com',
+                password: 'pwd123'
             }
 
             loginPage.submit(user.email, user.password)
@@ -35,7 +35,7 @@ describe('login', () => {
             const user = {
                 name: 'Thiago',
                 email: 'thiago@404.com',
-                password: '123456'
+                password: 'pwd123'
             }
 
             loginPage.submit(user.email, user.password)
