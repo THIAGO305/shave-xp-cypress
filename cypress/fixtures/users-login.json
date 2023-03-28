@@ -2,7 +2,8 @@
     "succsess":{
         "name": "ThiagoF",
         "email": "thiagof@gmail.com",
-        "password": "123456"
+        "password": "123456",
+        "is_shaver": false
     },
     "invpass":{
         "email": "thiago@gmail.com",
