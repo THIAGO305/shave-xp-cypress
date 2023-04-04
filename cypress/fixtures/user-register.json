@@ -1,0 +1,25 @@
+{
+    "valid": {
+        "name": "Jammes bond",
+        "email": "jammesb@gmail.com",
+        "password": "bond007",
+        "is_shaver": false
+    },
+    "shorpass": [
+        "1",
+        "12",
+        "123",
+        "1234",
+        "12345"
+    ],
+    "invemails": [
+        "jammes&gmail.com",
+        "jammes.com.br",
+        "@gmail.com",
+        "@",
+        "jammes@",
+        "121323",
+        "@#@!#!@",
+        "xpto123"
+    ]
+}
