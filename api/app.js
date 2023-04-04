@@ -8,7 +8,7 @@ const app = express()
 
 app.use(express.json())
 
-const { deleteUser, insertUser } = require('./db')
+const { deleteUser, insertUser, findToken } = require('./db')
 
 const userSchema = Joi.object({
     name: Joi.string().required(),
@@ -18,7 +18,18 @@ const userSchema = Joi.object({
 })
 
 app.get('/welcome', function (req, res) {
-    res.json({ message: 'Hello Ola QA' })
+    res.json({ message: 'Hello QA' })
+})
+
+app.get('/token/:email', async function (req, res) {
+    const { email } = req.params
+    const token = await findToken(email)
+
+    if (!token) {
+        return res.status(404).end()
+    }
+
+    res.status(200).json(token)
 })
 
 app.delete('/user/:email', async function (req, res) {
@@ -27,6 +38,8 @@ app.delete('/user/:email', async function (req, res) {
     await deleteUser(email)
     res.status(204).end()
 })
+
+
 
 app.post('/user', validator.body(userSchema), async function (req, res) {
     const { name, email, password, is_shaver } = req.body
