@@ -9,12 +9,12 @@ describe('register', () => {
         it.only('deve cadastrar com sucesso', () => {
 
             const user = data.valid
+            cy.deleteUser(user)
             registerPage.go()
             registerPage.submit(user.name, user.email, user.password)
 
             loginPage.submit(user.email, user.password)
             shaversPage.header.userShouldBeLoggedIn(user.name)
-            cy.deleteUser(user)
         })
 
         it('não deve cadsatar com email já cadastrado', () => {

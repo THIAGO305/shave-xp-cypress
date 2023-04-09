@@ -1,0 +1,15 @@
+{
+    "customer":{
+        "name": "chuck norris",
+        "email": "chuck@gmail.com",
+        "password": "norris007",
+        "is_shaver": false
+    },
+    "shaver":{
+        "name": "Jeremy Adams"
+    },
+    "service": {
+        "description": "Corte de cabelo",
+        "price": "79,99"
+    }
+}
