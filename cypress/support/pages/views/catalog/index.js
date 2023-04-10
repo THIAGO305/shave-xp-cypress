@@ -5,7 +5,7 @@ class CatalogPage {
             .click()
     }
 
-    confirOrder() {
+    confirmOrder() {
         cy.get('.swal2-confirm').click()
     }
 

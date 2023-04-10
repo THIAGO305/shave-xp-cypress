@@ -24,29 +24,29 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import loginPage from '../support/pages/login'
-import shaversPage from '../support/pages/shavers'
-const bdUrl = 'http://localhost:5000';
+import loginPage from '../support/pages/views/login'
+import shaversPage from '../support/pages/views/shavers'
 
 Cypress.Commands.add('createUser', (user) => {
+    cy.log(JSON.stringify(user))
 
     cy.request({
         method: 'POST',
-        url: `${bdUrl}/user`,
+        url: 'http://localhost:5000/user',
         body: user
     }).then(function (response) {
-        expect(response.status).to.eq(201);
-    });
-});
+        expect(response.status).to.eq(201)
+    })
+})
 
 Cypress.Commands.add('deleteUser', (user) => {
     cy.request({
         method: 'DELETE',
-        url: `${bdUrl}/user/${user.email}`
+        url: 'http://localhost:5000/user/' + user.email
     }).then(function (response) {
-        expect(response.status).to.eq(204);
-    });
-});
+        expect(response.status).to.eq(204)
+    })
+})
 
 Cypress.Commands.add('recoveryPass', (email) => {
     cy.request({
@@ -54,20 +54,20 @@ Cypress.Commands.add('recoveryPass', (email) => {
         url: 'http://localhost:3333/password/forgot',
         body: { email: email }
     }).then(result => {
-        expect(result.status).to.eql(204);
-    });
-});
+        expect(result.status).to.eql(204)
+    })
+})
 
 Cypress.Commands.add('getToken', (email) => {
     cy.request({
         method: 'GET',
-        url: `${bdUrl}/token/${email}`
+        url: 'http://localhost:5000/token/' + email
     }).then(result => {
-        expect(result.status).to.eql(200);
-        cy.log(result.body.token);
-        Cypress.env('passToken', result.body.token);
-    });
-});
+        expect(result.status).to.eql(200)
+        cy.log(result.body.token)
+        Cypress.env('passToken', result.body.token)
+    })
+})
 
 Cypress.Commands.add('uiLogin', (user) => {
     loginPage.submit(user.email, user.password)

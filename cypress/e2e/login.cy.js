@@ -1,17 +1,17 @@
+import loginPage from '../support/pages/views/login'
+import shaversPage from '../support/pages/views/shavers'
 
-import loginPage from '../support/pages/login'
-import shaversPage from '../support/pages/shavers'
 import data from '../fixtures/users-login.json'
 
 describe('login', () => {
 
     context('quando submeto o formulário', () => {
-        it.only('deve logar com sucesso', () => {
-            const user = data.succsess
+        it('deve logar com sucesso', () => {
+            const user = data.success
             cy.createUser(user)
 
             loginPage.submit(user.email, user.password)
-            shaversPage.header.userShouldBeLoggedIn(user.name)
+            shaversPage.header.userShouldBeLoggedIn(user.name)            
         })
 
         it('não deve logar com senha incorreta', () => {
@@ -20,7 +20,7 @@ describe('login', () => {
             loginPage.submit(user.email, user.password)
 
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
-            loginPage.noticeShouldBe(message)
+            loginPage.shared.noticeErrorShouldBe(message)
 
         })
 
@@ -30,7 +30,7 @@ describe('login', () => {
             loginPage.submit(user.email, user.password)
 
             const message = 'Ocorreu um erro ao fazer login, verifique suas credenciais.'
-            loginPage.noticeShouldBe(message)
+            loginPage.shared.noticeErrorShouldBe(message)
         })
 
         it('campos obrigatórios', () => {
@@ -42,8 +42,8 @@ describe('login', () => {
     context('senha muito curta', () => {
         data.shorpass.forEach((p) => {
             it(`não deve logar com a senha: ${p}`, () => {
-                loginPage.submit('thiago@teste.com.br', p)
-                loginPage.alertShouldBe('Pelo menos 6 caracteres')
+                loginPage.submit('papito@teste.com.br', p)
+                loginPage.shared.alertShouldBe('Pelo menos 6 caracteres')
             })
         })
     })
@@ -52,7 +52,7 @@ describe('login', () => {
         data.invemails.forEach((e) => {
             it(`não deve logar com o email: ${e}`, () => {
                 loginPage.submit(e, 'pwd123')
-                loginPage.alertShouldBe('Informe um email válido')
+                loginPage.shared.alertShouldBe('Informe um email válido')
             })
         })
     })

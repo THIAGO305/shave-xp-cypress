@@ -5,6 +5,12 @@
         "password": "bond007",
         "is_shaver": false
     },
+    "duplicateEmail":{
+        "name": "Jammes clone",
+        "email": "jammesc@gmail.com",
+        "password": "clone007",
+        "is_shaver": false
+    },
     "shorpass": [
         "1",
         "12",
